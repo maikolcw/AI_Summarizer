@@ -16,4 +16,5 @@ Tech stacks used:
 * React
 * Vite
 * Tailwindcss
+* Reduxjs/toolkit
 
