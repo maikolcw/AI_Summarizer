@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { logo } from "../assets";
 
 const Hero = () => {
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            if (scrollTop > 100) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <header className='w-full flex justify-center items-center flex-col'>
-            <nav className='flex justify-between items-center w-full mb-10 pt-3'>
+            <nav className={`flex justify-between items-center w-full mb-10 pt-3 px-10 fixed top-0 
+            z-20 ${scrolled ? "bg-black" : "bg-white"
+                }`}>
                 <img src={logo} alt='logo' className='w-56 object-contain' />
 
                 <button
