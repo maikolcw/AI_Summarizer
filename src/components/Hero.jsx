@@ -1,5 +1,5 @@
 import React from 'react'
-import { logo, logo2 } from "../assets";
+import { logo } from "../assets";
 
 const Hero = () => {
     return (
