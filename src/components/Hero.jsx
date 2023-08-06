@@ -8,7 +8,7 @@ const Hero = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-            if (scrollTop > 100) {
+            if (scrollTop > 50) {
                 setScrolled(true);
             } else {
                 setScrolled(false);
@@ -23,9 +23,11 @@ const Hero = () => {
     return (
         <header className='w-full flex justify-center items-center flex-col'>
             <nav className={`flex justify-between items-center w-full mb-10 pt-3 px-10 fixed top-0 
-            z-20 ${scrolled ? "bg-black" : "bg-white"
+            z-20 ${scrolled ? "bg_green_gradient" : "bg-white"
                 }`}>
-                <img src={logo} alt='logo' className='w-56 object-contain' />
+                <img src={logo} onClick={() => {
+                    window.scrollTo(0, 0);
+                }} alt='logo' className='w-56 object-contain cursor-pointer' />
 
                 <button
                     type='button'
@@ -39,12 +41,15 @@ const Hero = () => {
             </nav>
 
             <h1 className='head_text'>
-                Summarize Any Articles with <br className='max-md:hidden' />
-                <span className='green_gradient '>OpenAI GPT-4</span>
+                Summarize Any Article with <br className='max-md:hidden' />
+                <div className="mt-4">
+                    <span className='green_gradient'>OpenAI GPT-4</span>
+                </div>
+
             </h1>
             <h2 className='desc'>
                 Save yourself time with AI Summarizer, an open-source article/website summarizer
-                that turns lengthy explanations into short, clear, readable paragraphs.
+                that turns lengthy explanations into a short, clear, readable paragraph.
             </h2>
         </header>
     )
