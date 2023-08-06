@@ -53,6 +53,9 @@ const Summary = () => {
     return (
         <section className='mt-16 w-full max-w-xl'>
             <div className='flex flex-col w-full gap-2'>
+                <h2 className='font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
+                    Article <span className='green_gradient'>Link:</span>
+                </h2>
                 <form
                     className='relative flex justify-center items-center'
                     onSubmit={handleSubmit}
@@ -86,6 +89,11 @@ const Summary = () => {
 
                 {/* Summary history section */}
                 <div className='flex flex-col gap-1 max-h-60 overflow-y-auto'>
+                    {allArticles && (
+                        <h2 className='mt-5 font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
+                            Article <span className='green_gradient'>History:</span>
+                        </h2>
+                    )}
                     {allArticles.reverse().map((item, index) => (
                         <div
                             key={`link-${index}`}
@@ -122,8 +130,8 @@ const Summary = () => {
                 ) : (
                     article.summary && (
                         <div className='flex flex-col gap-3'>
-                            <h2 className='font-satoshi font-bold text-gray-600 text-xl'>
-                                Article <span className='blue_gradient'>Summary</span>
+                            <h2 className='font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
+                                Article <span className='green_gradient'>Summary:</span>
                             </h2>
                             <div className='summary_box'>
                                 <p className='font-inter font-medium text-sm text-gray-700'>
