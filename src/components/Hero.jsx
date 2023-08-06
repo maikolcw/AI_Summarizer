@@ -48,7 +48,7 @@ const Hero = () => {
 
             </h1>
             <h2 className='desc'>
-                Save yourself time with AI Summarizer, an open-source article/website summarizer
+                Save yourself time with AI Summarizer, an easy-to-use article/website summarizer
                 that turns lengthy explanations into a short, clear, readable paragraph.
             </h2>
         </header>
