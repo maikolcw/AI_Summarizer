@@ -3,12 +3,15 @@ import { copy, linkIcon, loader, tick, submit } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
 
 const Summary = () => {
+    // Tracks our current article, used for display of summary
     const [article, setArticle] = useState({
         url: '',
         summary: '',
     });
     // We use this state to keep track of all articles we searched for
     const [allArticles, setAllArticles] = useState([]);
+    // Keep track of data for clipboard
+    const [copied, setCopied] = useState("");
 
     // Lazy load
     const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
@@ -23,6 +26,7 @@ const Summary = () => {
         }
     }, []);
 
+    // Calls OPENAI API from Rapid API for summary and sets info to our states
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -37,6 +41,13 @@ const Summary = () => {
             // When we get summary we set key 'articles' with value of all articles
             localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
         }
+    };
+
+    // Copies link from selected history into clipboard
+    const handleCopy = (copyUrl) => {
+        setCopied(copyUrl);
+        navigator.clipboard.writeText(copyUrl);
+        setTimeout(() => setCopied(false), 3000);
     };
 
     return (
@@ -81,10 +92,10 @@ const Summary = () => {
                             onClick={() => setArticle(item)}
                             className='link_card'
                         >
-                            <div className='copy_btn'>
+                            <div className='copy_btn' onClick={() => handleCopy(item.url)}>
                                 <img
-                                    src={copy}
-                                    alt="copy_icon"
+                                    src={copied === item.url ? tick : copy}
+                                    alt={copied === item.url ? "tick_icon" : "copy_icon"}
                                     className='w-[40%] h-[40%] object-contain'
                                 />
                             </div>
