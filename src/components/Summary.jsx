@@ -12,6 +12,8 @@ const Summary = () => {
     const [allArticles, setAllArticles] = useState([]);
     // Keep track of data for clipboard
     const [copied, setCopied] = useState("");
+    // Workaround for History h2 showing up without any history
+    const [firstHistory, setFirstHistory] = useState("");
 
     // Lazy load
     const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
@@ -38,6 +40,7 @@ const Summary = () => {
             setArticle(newArticle);
             // Update all articles state
             setAllArticles(updatedAllArticles);
+            setFirstHistory("There is history")
             // When we get summary we set key 'articles' with value of all articles
             localStorage.setItem("articles", JSON.stringify(updatedAllArticles));
         }
@@ -89,7 +92,7 @@ const Summary = () => {
 
                 {/* Summary history section */}
                 <div className='flex flex-col gap-1 max-h-60 overflow-y-auto'>
-                    {allArticles && (
+                    {firstHistory && (
                         <h2 className='mt-5 font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
                             Article <span className='green_gradient'>History:</span>
                         </h2>
