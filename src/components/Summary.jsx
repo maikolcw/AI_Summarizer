@@ -128,19 +128,34 @@ const Summary = () => {
                     </p>
                 ) : (
                     article.summary && (
-                        <div className='flex flex-col gap-3'>
-                            <h2 className='font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
-                                Article <span className='green_gradient'>Summary:</span>
-                            </h2>
-                            <div className='summary_box'>
-                                <p className='font-inter font-medium text-sm text-gray-700'>
-                                    {article.summary}
-                                </p>
+                        <div>
+                            <div className='flex flex-col gap-3'>
+                                <h2 className='font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
+                                    Article <span className='green_gradient'>Summary:</span>
+                                </h2>
+                                <div className='summary_box'>
+                                    <p className='font-inter font-medium text-sm text-gray-700'>
+                                        {article.summary}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className='flex flex-col gap-3 mt-3 items-center'>
+                                <div className='copy_btn_summary' onClick={() => handleCopy(article.summary)}>
+                                    <img
+                                        src={copied === article.summary ? tick : copy}
+                                        alt={copied === article.summary ? "tick_icon" : "copy_icon"}
+                                        className='object-contain'
+                                    />
+                                </div>
                             </div>
                         </div>
+
+
                     )
                 )}
             </div>
+
+
         </section>
     );
 };
