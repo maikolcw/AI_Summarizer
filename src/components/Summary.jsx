@@ -89,11 +89,10 @@ const Summary = () => {
 
                 {/* Summary history section */}
                 <div className='flex flex-col gap-1 max-h-60 overflow-y-auto'>
-                    {allArticles && (
-                        <h2 className='mt-5 font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
+                    {allArticles.length == 0 ?
+                        null : <h2 className='mt-5 font-satoshi font-bold text-gray-200 text-xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]'>
                             Article <span className='green_gradient'>History:</span>
-                        </h2>
-                    )}
+                        </h2>}
                     {allArticles.reverse().map((item, index) => (
                         <div
                             key={`link-${index}`}
