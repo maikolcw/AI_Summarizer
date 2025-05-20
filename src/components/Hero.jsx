@@ -8,7 +8,7 @@ const Hero = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-            if (scrollTop > 50) {
+            if (scrollTop > 10) {
                 setScrolled(true);
             } else {
                 setScrolled(false);
@@ -22,14 +22,15 @@ const Hero = () => {
 
     return (
         <header className='w-full flex justify-center items-center flex-col'>
-            <nav className={`flex justify-between items-center w-full mb-10 pt-3 px-10 fixed top-0 
-            z-20 ${scrolled ? "bg_green_gradient" : "bg-white"
-                }`}>
-                <img src={logo} onClick={() => {
+            <nav className={`flex justify-center items-center w-full mb-10 px-10 fixed top-0 
+            z-20 ${scrolled ? "bg_green_gradient cursor-pointer" : "bg-white"
+                }`} onClick={() => {
                     window.scrollTo(0, 0);
-                }} alt='logo' className='w-56 object-contain cursor-pointer' />
+                }}>
+                <img src={logo} alt='logo' className={`w-56 object-contain ${scrolled ? "cursor-pointer" : "cursor-default"
+                }`} />
 
-                <button
+                {/* <button
                     type='button'
                     onClick={() =>
                         window.open("https://github.com/maikolcw/ai_summarizer", "_blank")
@@ -37,19 +38,19 @@ const Hero = () => {
                     className='black_btn'
                 >
                     GitHub
-                </button>
+                </button> */}
             </nav>
 
-            <h1 className='head_text'>
-                Summarize Any Article with <br className='max-md:hidden' />
+            <h1 className='head_text green_gradient_reverse'>
+                Summarize Websites with <br className='max-md:hidden' />
                 <div className="mt-4">
-                    <span className='green_gradient'>OpenAI GPT-4</span>
+                    <span className='green_gradient'>the latest in AI</span>
                 </div>
 
             </h1>
             <h2 className='desc'>
-                Save yourself time with AI Summarizer, an easy-to-use article/website summarizer
-                that turns lengthy explanations into a short, clear, digestable format.
+                Save yourself time with AI Summarizer, an easy-to-use website summarizer
+                that turns lengthy texts into a clear, digestable format.
             </h2>
         </header>
     )
