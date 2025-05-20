@@ -29,16 +29,6 @@ const Hero = () => {
                 }}>
                 <img src={logo} alt='logo' className={`w-56 object-contain ${scrolled ? "cursor-pointer" : "cursor-default"
                 }`} />
-
-                {/* <button
-                    type='button'
-                    onClick={() =>
-                        window.open("https://github.com/maikolcw/ai_summarizer", "_blank")
-                    }
-                    className='black_btn'
-                >
-                    GitHub
-                </button> */}
             </nav>
 
             <h1 className='head_text green_gradient_reverse'>
